@@ -14,3 +14,24 @@ h1 {
 md-input-container {
     padding: 10px;
 }
+#forgot-password:hover {
+    color: #4527a0;  
+}
+#forgot-password {
+    color: #999;
+    margin: 15px;
+}
+a {
+    text-decoration: none;
+    color: #4527a0;
+    margin-left: 5px;
+    font-weight: bold;
+}
+a:hover {
+    color: #999;
+}
+.wrapper {
+    display: inline-flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}

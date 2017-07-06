@@ -1,10 +1,17 @@
 <md-card>
-    <h1>Login page</h1>
+    <h1>Log in!</h1>
     <md-input-container color="primary" class="full-width">
-      <input mdInput placeholder="E-mail" value="E-mail">
+      <input mdInput type="email" placeholder="E-mail" value="your@email.com">
     </md-input-container>
     <md-input-container color="primary" class="full-width">
-      <input mdInput placeholder="Password" value="Password">
+      <input mdInput type="password" placeholder="Password" value="Password">
     </md-input-container>
-    <button md-raised-button color="primary">Log in</button>
+    <div class="wrapper">
+      <button md-raised-button color="primary">Log in</button>
+      <a routerLink="/forgot_password" id="forgot-password">Forgot password?</a>
+    </div>
+    <div class="wrapper">
+      <p>Need an account?</p>
+      <a routerLink="/signup">Sign up now!</a>
+    </div>
 </md-card>

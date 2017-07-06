@@ -1,16 +1,21 @@
 <md-card>
-    <h1>Signup page</h1>
+    <h1>Sign up!</h1>
     <md-input-container color="primary" class="full-width">
-      <input mdInput placeholder="Name" value="Name">
+      <input mdInput type="text" placeholder="Name" value="Jane">
+      <md-error>Name is required</md-error>
     </md-input-container>
     <md-input-container color="primary" class="full-width">
-      <input mdInput placeholder="Surname" value="Surname">
+      <input mdInput type="text" placeholder="Surname" value="Doe">
     </md-input-container>
     <md-input-container color="primary" class="full-width">
-      <input mdInput placeholder="E-mail" value="E-mail">
+      <input mdInput type="email" placeholder="E-mail" value="your@email.com">
     </md-input-container>
     <md-input-container color="primary" class="full-width">
-      <input mdInput placeholder="Password" value="Password">
+      <input mdInput type="password" placeholder="Password" value="Password">
     </md-input-container>
     <button md-raised-button color="primary">Sign up</button>
+    <div class="wrapper">
+      <p>Already signed up?</p>
+      <a routerLink="/login">Log in</a>
+    </div>
 </md-card>

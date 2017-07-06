@@ -5,7 +5,7 @@ h1 {
   text-align: center;
 }
 nav {
-    width: 200px;
+   
     margin: 0 auto;
 }
 nav a {
@@ -17,12 +17,12 @@ nav a {
   border-radius: 4px;
 }
 nav a:visited, a:link {
-  color: #607D8B;
+  color: #999;
 }
 nav a:hover {
-  color: #72bcd4;
+  color: #4527a0;
   background-color: #CFD8DC;
 }
 nav a.active {
-  color: #72bcd4;
+  color: #4527a0;
 }

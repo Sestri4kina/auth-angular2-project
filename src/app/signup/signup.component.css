@@ -14,3 +14,14 @@ h1 {
 md-input-container {
     padding: 10px;
 }
+a {
+    text-decoration: none;
+    color: #4527a0;
+    margin-left: 5px;
+    font-weight: bold;
+}
+.wrapper {
+    display: inline-flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
