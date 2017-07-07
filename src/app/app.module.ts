@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AuthModule,
+    AuthModule,//import order matters: AppRouting must come after AuthModule
     AppRoutingModule,
   ],
   providers: [],
