@@ -1,3 +1,4 @@
+
 .full-width {
   width: 100%;
 }
@@ -15,7 +16,7 @@ md-input-container {
     padding: 10px;
 }
 #forgot-password:hover {
-    color: #4527a0;  
+    border-bottom: 1px solid #999;
 }
 #forgot-password {
     color: #999;
@@ -28,10 +29,11 @@ a {
     font-weight: bold;
 }
 a:hover {
-    color: #999;
+    border-bottom: 1px solid #4527a0;
+    cursor: pointer;
 }
 .wrapper {
     display: inline-flex;
     margin-top: 20px;
-    justify-content: space-between;
+    
 }

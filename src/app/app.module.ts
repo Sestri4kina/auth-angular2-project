@@ -1,30 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import 'hammerjs';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AuthModule } from './auth-module/auth.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    SignupComponent,
-    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
-    MaterialModule,
-    BrowserAnimationsModule,
+    AuthModule,
     AppRoutingModule,
-    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
