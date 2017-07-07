@@ -8,6 +8,7 @@ import 'hammerjs';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
+    AuthRoutingModule
   ],
   providers: [],
   exports: []//? do I need to add AuthComponent
