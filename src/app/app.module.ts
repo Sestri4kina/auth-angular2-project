@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth-module/auth.module';
+import { CoreModule } from './core/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './core/home/home.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     AuthModule,//import order matters: AppRouting must come after AuthModule
     AppRoutingModule,
   ],
