@@ -1,21 +1,26 @@
 <md-card>
+  <form [formGroup]="signupForm">
     <h1>Sign up!</h1>
     <md-input-container color="primary" class="full-width">
-      <input mdInput type="text" placeholder="Name" value="Jane">
+      <input mdInput type="text" formControlName="name" placeholder="Name" value="Jane">
       <md-error>Name is required</md-error>
     </md-input-container>
     <md-input-container color="primary" class="full-width">
-      <input mdInput type="text" placeholder="Surname" value="Doe">
+      <input mdInput type="text" formControlName="surname" placeholder="Surname" value="Doe">
+      <md-error>Surname is required</md-error>
     </md-input-container>
     <md-input-container color="primary" class="full-width">
-      <input mdInput type="email" placeholder="E-mail" value="your@email.com">
+      <input mdInput type="email" formControlName="email" placeholder="E-mail" value="your@email.com">
+      <md-error>Email is required</md-error>
     </md-input-container>
     <md-input-container color="primary" class="full-width">
-      <input mdInput type="password" placeholder="Password" value="Password">
+      <input mdInput type="password" formControlName="password" placeholder="Password" value="Password">
+      <md-error>Password is required</md-error>
     </md-input-container>
-    <button md-raised-button color="primary">Sign up</button>
+    <button type="submit" md-raised-button color="primary">Sign up</button>
     <div class="wrapper">
       <p>Already signed up?</p>
       <a routerLink="/login">Log in</a>
     </div>
+  </form>  
 </md-card>

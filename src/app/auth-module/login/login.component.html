@@ -1,17 +1,22 @@
 <md-card>
+  <form [formGroup]="loginForm">
     <h1>Log in!</h1>
     <md-input-container color="primary" class="full-width">
-      <input mdInput type="email" placeholder="E-mail" value="your@email.com">
+      <input mdInput type="email" formControlName="email" placeholder="E-mail" value="your@email.com">
+       <md-error>Email is required</md-error>
     </md-input-container>
     <md-input-container color="primary" class="full-width">
-      <input mdInput type="password" placeholder="Password" value="Password">
+      <input mdInput type="password" formControlName="password" placeholder="Password" value="Password">
+       <md-error>Password is required</md-error>
     </md-input-container>
     <div class="wrapper">
-      <button md-raised-button color="primary">Log in</button>
+      <button type="submit" md-raised-button color="primary">Log in</button>
       <a routerLink="/forgot_password" id="forgot-password">Forgot password?</a>
     </div>
     <div class="wrapper">
       <p>Need an account?</p>
       <a routerLink="/signup">Sign up now!</a>
     </div>
+  </form>
 </md-card>
+<!--  <p *ngIf="loginForm.controls.email.errors">This field is required</p>  -->
