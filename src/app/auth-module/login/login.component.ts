@@ -39,9 +39,12 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("password", password);
 
       let emailLS = localStorage.getItem("email");
-      let passwordLS = localStorage.getItem("password");
+      //let passwordLS = localStorage.getItem("password");
       
       console.log(localStorage);
+
+      let message = `You logged in as ${emailLS}`;
+      alert(message);
       this.router.navigate(['/home']);
     }
 
