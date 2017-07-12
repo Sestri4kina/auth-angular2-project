@@ -9,9 +9,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 //The variable clarifies the routing module pattern in case you export the module in the future 
 const authRoutes: Routes = [
   {
-    path: '',
-    children : [
-      {
+    
         path: '',
         children: [
           { path: '', redirectTo:'login',pathMatch:'full' },
@@ -19,8 +17,7 @@ const authRoutes: Routes = [
           { path: 'signup', component: SignupComponent },
           { path: 'forgot_password', component: ForgotPasswordComponent }
         ]
-      }
-    ]
+      
   }
 ];
  
