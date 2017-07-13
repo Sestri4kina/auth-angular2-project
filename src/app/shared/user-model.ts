@@ -4,10 +4,18 @@ enum UserType {
     Guest
 }
 
-export class UserModel {
+interface UserInterface {
     userType: UserType;
     email: string;
     password: string;
-    firstName: string;
-    lastName: string;
+    firstName?: string;
+    lastName?: string;
+}
+
+export class User implements UserInterface {
+    userType: UserType;
+    email: string;
+    password: string;
+    firstName?: string;
+    lastName?: string;
 }
