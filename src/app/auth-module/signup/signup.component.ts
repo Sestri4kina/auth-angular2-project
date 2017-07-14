@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
         firstName = formData.name,
         lastName = formData.surname;
       
-      let user = {"email": email, "password": password};
+      let user = { "userType": userType, "email": email, "password": password, "firstName": firstName, "lastName": lastName };
 
       this.userService.signup(user);
   }

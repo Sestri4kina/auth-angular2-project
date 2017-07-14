@@ -8,10 +8,11 @@ import { AuthModule } from './auth-module/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-import { UserService } from './shared/services/user.service';
 import { AdminComponent } from './admin/admin.component';
 import { ProfileComponent } from './profile/profile.component';
+
+import { UserService } from './shared/services/user.service';
+
 
 
 @NgModule({

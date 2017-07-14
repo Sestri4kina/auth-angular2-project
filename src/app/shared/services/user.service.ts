@@ -18,6 +18,7 @@ export class UserService {
                     localStorage.setItem("currentUser", JSON.stringify(user));
                     alert("Congratulations! You are logged in.");
                     this.router.navigate(['/home']);
+                    return;
                 } else if (user.email === users[i].email && user.password !== users[i].password) {
                     alert("You entered a wrong password");
                     return;
@@ -48,12 +49,14 @@ export class UserService {
 
     logout(): void {
         localStorage.setItem("currentUser", JSON.stringify({}));
+        alert("You are log out!");
+        this.router.navigate(['/home']);
     }
 
     isLogged(): boolean {
         let currentUser = localStorage.currentUser !== undefined ? JSON.parse(localStorage.currentUser) : {};
         
-        return Object.keys(currentUser).length === 0 && currentUser.constructor === Object;
+        return Object.keys(currentUser).length !== 0 && currentUser.constructor === Object;
     }
 
     private _isAlreadyHave(user: User): boolean {
@@ -65,10 +68,9 @@ export class UserService {
             for (let i = 0; i < users.length; i++) {
                 if (user.email === users[i].email) {
                     return true;
-                } else {
-                    return false;
                 } 
             }
+            return false;
         }
     }
 }
