@@ -5,7 +5,7 @@ enum UserType {
 }
 
 interface UserInterface {
-    userType: UserType;
+    userType?: UserType;
     email: string;
     password: string;
     firstName?: string;
@@ -13,7 +13,7 @@ interface UserInterface {
 }
 
 export class User implements UserInterface {
-    userType: UserType;
+    userType?: UserType;
     email: string;
     password: string;
     firstName?: string;

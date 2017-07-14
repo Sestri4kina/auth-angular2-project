@@ -16,6 +16,8 @@ export class UserService {
             for (let i = 0; i < users.length; i++) {
                 if (user.email === users[i].email && user.password === users[i].password) {
                     localStorage.setItem("currentUser", JSON.stringify(user));
+                    alert("Congratulations! You are logged in.");
+                    this.router.navigate(['/home']);
                 } else if (user.email === users[i].email && user.password !== users[i].password) {
                     alert("You entered a wrong password");
                     return;
@@ -40,6 +42,8 @@ export class UserService {
             users.push(user);
         }
         localStorage.setItem("users", JSON.stringify(users));
+        alert("Congratulations! You are signed up.");
+        this.router.navigate(['/home']);
     }
 
     logout(): void {

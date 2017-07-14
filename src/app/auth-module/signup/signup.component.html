@@ -1,12 +1,16 @@
 <md-card>
-  <form [formGroup]="signupForm">
+  <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
     <h1>Sign up!</h1>
     <md-input-container color="primary" class="full-width">
-      <input mdInput type="text" formControlName="name" placeholder="Name" value="Jane">
+      <input mdInput type="text" formControlName="userType" placeholder="User Type: Admin, User, Guest" value="Admin, User, Guest">
+      <md-error>User type is required</md-error>
+    </md-input-container>
+    <md-input-container color="primary" class="full-width">
+      <input mdInput type="text" formControlName="name" placeholder="First Name" value="Jane">
       <md-error>Name is required</md-error>
     </md-input-container>
     <md-input-container color="primary" class="full-width">
-      <input mdInput type="text" formControlName="surname" placeholder="Surname" value="Doe">
+      <input mdInput type="text" formControlName="surname" placeholder="Last Name" value="Doe">
       <md-error>Surname is required</md-error>
     </md-input-container>
     <md-input-container color="primary" class="full-width">

@@ -9,12 +9,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { UserService } from './shared/services/user.service';
+import { AdminComponent } from './admin/admin.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
+    AdminComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +28,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AuthModule,//import order matters: AppRouting must come after AuthModule
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [ UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
