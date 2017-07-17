@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminComponent } from './admin/admin.component';
+import { ProfileComponent } from './profile/profile.component';
 import { AuthModule } from './auth-module/auth.module';
  
 //The Routing Module pulls the routes into a variable. 
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'auth', loadChildren: 'app/auth-module/auth.module#AuthModule'},
   { path: 'admin', component: AdminComponent },
+  {path: '{{currentUser.firstName}}', component: ProfileComponent},
   { path: '404', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

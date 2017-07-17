@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 @Injectable()
 export class UserService {
     constructor(private router: Router) { }
-    redirectUrl: string;
 
     login(user: User): void {
         let users = localStorage.users !== undefined ? JSON.parse(localStorage.users) : [];
@@ -17,6 +16,9 @@ export class UserService {
             for (let i = 0; i < users.length; i++) {
                 
                 if (user.email == users[i].email && user.password == users[i].password) {
+                    user.userType = users[i].userType;
+                    user.firstName = users[i].firstName;
+                    user.lastName = users[i].lastName;
                     localStorage.setItem("currentUser", JSON.stringify(user));
                     alert("Congratulations! You are logged in.");
                     this.router.navigate(['/home']);
