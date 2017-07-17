@@ -5,30 +5,24 @@ import { Router } from '@angular/router';
 @Injectable()
 export class UserService {
     constructor(private router: Router) { }
+    redirectUrl: string;
 
     login(user: User): void {
         let users = localStorage.users !== undefined ? JSON.parse(localStorage.users) : [];
-
+        
         if (users.length === 0) {
             alert("You are not singed up, please, sign up firstly");
             this.router.navigate(['/auth/signup']);
         } else {
             for (let i = 0; i < users.length; i++) {
-                if (user.email === users[i].email && user.password === users[i].password) {
+                
+                if (user.email == users[i].email && user.password == users[i].password) {
                     localStorage.setItem("currentUser", JSON.stringify(user));
                     alert("Congratulations! You are logged in.");
                     this.router.navigate(['/home']);
-                    return;
-                } else if (user.email === users[i].email && user.password !== users[i].password) {
-                    alert("You entered a wrong password");
-                    return;
-                } else if (user.email !== users[i].email && user.password === users[i].password) {
-                    alert("You entered a wrong email");
-                    return;
-                } else if (user.email !== users[i].email && user.password !== users[i].password) {
-                    alert("There is no user with such email and password");
-                    return;
-                }
+                } else if ((user.email === users[i].email && user.password !== users[i].password) ||  (user.email !== users[i].email && user.password === users[i].password)) {
+                    alert("You entered a wrong email or password");
+                } 
             }
         }
     }
@@ -48,15 +42,15 @@ export class UserService {
     }
 
     logout(): void {
-        localStorage.setItem("currentUser", JSON.stringify({}));
+        localStorage.removeItem("currentUser");
         alert("You are log out!");
         this.router.navigate(['/home']);
     }
 
     isLogged(): boolean {
-        let currentUser = localStorage.currentUser !== undefined ? JSON.parse(localStorage.currentUser) : {};
+        let currentUser = JSON.parse(localStorage.currentUser) || null;
         
-        return Object.keys(currentUser).length !== 0 && currentUser.constructor === Object;
+        return currentUser !== null;
     }
 
     private _isAlreadyHave(user: User): boolean {

@@ -15,8 +15,8 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       userType: ['', Validators.required],
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
@@ -28,8 +28,8 @@ export class SignupComponent implements OnInit {
       let userType = formData.userType,
         email = formData.email,
         password = formData.password,
-        firstName = formData.name,
-        lastName = formData.surname;
+        firstName = formData.firstName,
+        lastName = formData.lastName;
       
       let user = { "userType": userType, "email": email, "password": password, "firstName": firstName, "lastName": lastName };
 

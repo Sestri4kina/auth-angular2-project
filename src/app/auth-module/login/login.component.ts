@@ -29,30 +29,6 @@ export class LoginComponent implements OnInit {
       let user = {"email": email, "password": password};
 
       this.userService.login(user);
-      /*
-      if (email === "" && password !== "") {
-        alert("Please enter email");
-        return;
-      } else if (password === "" && email !== "") {
-        alert("Please enter password");
-        return;
-      } else if (email === "" && password === "") {
-        alert("Please enter email and password");
-        return;
-      }
-
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
-
-      let emailLS = localStorage.getItem("email");
-      //let passwordLS = localStorage.getItem("password");
-      
-      console.log(localStorage);
-
-      let message = `You logged in as ${emailLS}`;
-      alert(message);
-      this.router.navigate(['/home']);
-      */
     }
     
 }

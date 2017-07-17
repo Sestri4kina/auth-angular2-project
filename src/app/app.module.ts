@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ProfileComponent } from './profile/profile.component';
 
 import { UserService } from './shared/services/user.service';
+import { AuthGuard } from './shared/services/auth-guard.service';
 
 
 
@@ -29,7 +30,7 @@ import { UserService } from './shared/services/user.service';
     AuthModule,//import order matters: AppRouting must come after AuthModule
     AppRoutingModule,
   ],
-  providers: [ UserService ],
+  providers: [ UserService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
