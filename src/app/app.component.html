@@ -2,10 +2,10 @@
   <nav>
     <a routerLink="/home" routerLinkActive="active">Home</a>
     <a routerLink="/admin" routerLinkActive="active">Admin</a>
-    <a routerLink="/auth/login" routerLinkActive="active" *ngIf="!userService.isLogged()">Log In</a>
-    <a routerLink="/auth/signup" routerLinkActive="active" *ngIf="!userService.isLogged()">Sign Up</a>
-    <a routerLink="/profile" routerLinkActive="active" *ngIf="userService.isLogged()">{{currentUser.firstName}}</a>
-    <a href="#" (click)="userService.logout()" *ngIf="userService.isLogged()">Log Out</a><!-- *ngIf="userService.isLogged()" -->
+    <a routerLink="/auth/login" routerLinkActive="active" *ngIf="!currentUser">Log In</a>
+    <a routerLink="/auth/signup" routerLinkActive="active" *ngIf="!currentUser">Sign Up</a>
+    <a routerLink="/profile" routerLinkActive="active" *ngIf="currentUser">{{currentUser.firstName}}</a>
+    <a href="#" (click)="userService.logout()" *ngIf="currentUser">Log Out</a>
   </nav>
   <router-outlet></router-outlet>
 </div>

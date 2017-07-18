@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
     constructor(private userService: UserService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    let currentUserType = JSON.parse(localStorage.getItem('currentUser')).userType.toUpperCase();
+    let currentUserType = localStorage.currentUser !== null ? JSON.parse(localStorage.getItem('currentUser')).userType.toUpperCase() : null;
     if (currentUserType === 'ADMIN') {
         return true;
     }

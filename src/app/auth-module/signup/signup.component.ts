@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../shared/services/user.service';
@@ -10,7 +11,11 @@ import { UserService } from '../../shared/services/user.service';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private userService: UserService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -31,8 +36,22 @@ export class SignupComponent implements OnInit {
         firstName = formData.firstName,
         lastName = formData.lastName;
       
-      let user = { "userType": userType, "email": email, "password": password, "firstName": firstName, "lastName": lastName };
+      let user = { userType, email, password, firstName, lastName };
 
-      this.userService.signup(user);
+      this.userService.signup(user).subscribe(_users => {
+        alert("Congratulations! You are signed up.");
+        this.router.navigate(['/auth/login']);
+      }, (err) => {
+        alert(err);
+      });
+      /*
+      this.userService.login(user).subscribe(_user => {
+        alert("Congratulations! You are logged in.");
+        this.router.navigate(['/home']);
+      }, (err) => {
+        alert(err);
+        this.router.navigate(['/auth/signup']);
+      });
+      */
   }
 }

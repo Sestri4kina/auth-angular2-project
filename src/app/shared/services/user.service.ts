@@ -1,36 +1,64 @@
+import { BehaviorSubject, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { User } from '../user-model';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
+    _user: Subject<User> = new Subject();
+    _users: Subject<User[]> = new Subject();
     constructor(private router: Router) { }
 
-    login(user: User): void {
-        let users = localStorage.users !== undefined ? JSON.parse(localStorage.users) : [];
-        
-        if (users.length === 0) {
-            alert("You are not singed up, please, sign up firstly");
-            this.router.navigate(['/auth/signup']);
-        } else {
-            for (let i = 0; i < users.length; i++) {
-                
-                if (user.email == users[i].email && user.password == users[i].password) {
-                    user.userType = users[i].userType;
-                    user.firstName = users[i].firstName;
-                    user.lastName = users[i].lastName;
-                    localStorage.setItem("currentUser", JSON.stringify(user));
-                    alert("Congratulations! You are logged in.");
-                    this.router.navigate(['/home']);
-                } else if ((user.email === users[i].email && user.password !== users[i].password) ||  (user.email !== users[i].email && user.password === users[i].password)) {
-                    alert("You entered a wrong email or password");
-                } 
-            }
-        }
+    // get user() {
+        // return this._user.map(user => {
+        //     return JSON.parse(localStorage.getItem('currentUser'));
+        // });
+    // }
+
+    set user(_user: User) {
+        localStorage.setItem("currentUser", JSON.stringify(_user))
+        this._user.next(_user);
     }
 
-    signup(user: User): void {
-        let users = localStorage.users !== undefined ? JSON.parse(localStorage.users) : [];
+    set users(_users: User[]) {
+        localStorage.setItem("users", JSON.stringify(_users))
+        this._users.next(_users);
+    }
+
+    login(user: User) {
+        const res = new BehaviorSubject<User>(null);
+        let users: User[] = localStorage.users !== undefined ? JSON.parse(localStorage.users) : [];
+        
+        if (!users.length) {
+            res.error('You are not singed up, please, sign up firstly');
+        }
+        const loggedUser = users.find(_user => _user.email === user.email && _user.password === user.password);
+        if (loggedUser) {
+            this.user = loggedUser;
+            res.next(loggedUser);
+        } else {
+            res.error('You are not singed up, please, sign up firstly');
+        }
+
+        return res;
+    }
+
+    signup(user: User) {
+        const res = new BehaviorSubject<User>(null);
+        let users: User[] = localStorage.users !== undefined ? JSON.parse(localStorage.users) : [];
+
+        const signedUser = user;
+        if (signedUser) {
+            this.users = [...users, signedUser];
+            res.next(signedUser);
+        } else {
+            res.error('Please sing up');
+        }
+
+        return res;
+
+        /*
+        let users: User[] = localStorage.users !== undefined ? JSON.parse(localStorage.users) : [];
        
         if (this._isAlreadyHave(user)) {
             alert("You are already sign up, please, log in instead");
@@ -41,12 +69,17 @@ export class UserService {
         localStorage.setItem("users", JSON.stringify(users));
         alert("Congratulations! You are signed up.");
         this.router.navigate(['/home']);
+        */
     }
 
-    logout(): void {
-        localStorage.removeItem("currentUser");
-        alert("You are log out!");
-        this.router.navigate(['/home']);
+    logout() {
+        const res = new BehaviorSubject<boolean>(false);
+        this.user = null;
+        res.next(true);
+        return res;
+        // localStorage.removeItem("currentUser");
+        // alert("You are log out!");
+        // this.router.navigate(['/home']);
     }
 
     isLogged(): boolean {
