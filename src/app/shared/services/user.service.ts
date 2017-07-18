@@ -50,7 +50,7 @@ export class UserService {
     }
 
     isLogged(): boolean {
-        let currentUser = JSON.parse(localStorage.currentUser) || null;
+        let currentUser = localStorage.currentUser !== undefined ? JSON.parse(localStorage.currentUser) : null;
         
         return currentUser !== null;
     }

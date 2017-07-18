@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'app/shared/services/user.service';
+import { User } from 'app/shared/user-model';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,10 @@ import { UserService } from 'app/shared/services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent { 
-  constructor(private userService: UserService) { }
+  currentUser: User;
+  users: User[] = [];
+
+  constructor(public userService: UserService) { 
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 }
